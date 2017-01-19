@@ -42,7 +42,7 @@
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
-class nubis_alertmanager($version = '0.5.1', $project=undef) {
+class nubis_alertmanager($version = '0.5.1', $tag_name='monitoring', $project=undef) {
   $alertmanager_url = "https://github.com/prometheus/alertmanager/releases/download/v${version}/alertmanager-${version}.linux-amd64.tar.gz"
 
   if (!$project) {
@@ -103,4 +103,20 @@ fi
     mode    => '0644',
     content => template("${module_name}/svc-alertmanager.json.tmpl"),
   }
+  
+  file { '/etc/confd/conf.d/alertmanager.toml':
+    ensure  => file,
+    owner   => root,
+    group   => root,
+    mode    => '0644',
+    content => template("${module_name}/alertmanager.toml.tmpl"),
+  }
+
+  file { '/etc/confd/templates/alertmanager.yml.tmpl':
+    ensure  => file,
+    owner   => root,
+    group   => root,
+    mode    => '0644',
+    content => template("${module_name}/alertmanager.yml.tmpl.tmpl"),
+  }  
 }
