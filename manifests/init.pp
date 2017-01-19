@@ -42,7 +42,20 @@
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
-class nubis_alertmanager {
+class nubis_alertmanager($version = '0.5.1', $project=undef) {
+  $alertmanager_url = "https://github.com/prometheus/alertmanager/releases/download/v${version}/alertmanager-${version}.linux-amd64.tar.gz"
 
+  if (!$project) {
+    $project = $::project_name
+  }
 
+  notice ("Grabbing alertmanager ${version}")
+  staging::file { "alertmanager.${version}.tar.gz":
+    source => $alertmanager_url,
+  }->
+  staging::extract { "alertmanager.${version}.tar.gz":
+    strip   => 1,
+    target  => '/usr/local/bin',
+    creates => '/usr/local/bin/alertmanager',
+  }
 }
