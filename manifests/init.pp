@@ -103,7 +103,7 @@ fi
     mode    => '0644',
     content => template("${module_name}/svc-alertmanager.json.tmpl"),
   }
-  
+
   file { '/etc/confd/conf.d/alertmanager.toml':
     ensure  => file,
     owner   => root,
@@ -118,5 +118,5 @@ fi
     group   => root,
     mode    => '0644',
     content => template("${module_name}/alertmanager.yml.tmpl.tmpl"),
-  }  
+  }
 }
