@@ -1,0 +1,16 @@
+{
+  "service": {
+    "name": "<%= @project %>-alertmanager",
+    "port": 9093,
+    "tags": [
+      "<%= @project %>",
+      "traefik.tags=<%= @tag_name %>",
+      "traefik.frontend.rule=PathPrefix:/alertmanager"
+    ],
+    "check": {
+       "http": "http://localhost:9093/alertmanager/",
+       "interval": "10s",
+       "timeout": "1s"
+    }
+  }
+}

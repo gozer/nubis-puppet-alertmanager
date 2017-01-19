@@ -95,4 +95,12 @@ if [ $goal != "stop" ]; then
 fi
 ',
   }
+
+  file { '/etc/consul/svc-alertmanager.json':
+    ensure  => file,
+    owner   => root,
+    group   => root,
+    mode    => '0644',
+    content => template("${module_name}/svc-alertmanager.json.tmpl"),
+  }
 }
