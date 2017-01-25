@@ -45,8 +45,10 @@
 class nubis_alertmanager($version = '0.5.1', $tag_name='monitoring', $project=undef) {
   $alertmanager_url = "https://github.com/prometheus/alertmanager/releases/download/v${version}/alertmanager-${version}.linux-amd64.tar.gz"
 
-  if (!$project) {
-    $project = $::project_name
+  if ($project) {
+    $alertmanager_project = $project
+  else {
+    $alertmanager_project = $::project_name
   }
 
   notice ("Grabbing alertmanager ${version}")
