@@ -47,6 +47,7 @@ class nubis_alertmanager($version = '0.5.1', $tag_name='monitoring', $project=un
 
   if ($project) {
     $alertmanager_project = $project
+  }
   else {
     $alertmanager_project = $::project_name
   }
