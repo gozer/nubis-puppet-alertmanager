@@ -42,7 +42,7 @@
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
-class nubis_alertmanager($version = '0.5.1', $tag_name='monitoring', $project=undef) {
+class nubis_alertmanager($version = '0.8.0', $tag_name='monitoring', $project=undef) {
   $alertmanager_url = "https://github.com/prometheus/alertmanager/releases/download/v${version}/alertmanager-${version}.linux-amd64.tar.gz"
 
   if ($project) {
