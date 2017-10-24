@@ -83,7 +83,7 @@ class nubis_alertmanager($version = '0.8.0', $tag_name='monitoring', $project=un
     . /etc/profile.d/proxy.sh
   fi
 
-  exec /usr/local/bin/alertmanager -config.file /etc/alertmanager.yml -web.external-url "http://mon.$(nubis-metadata NUBIS_ENVIRONMENT).$(nubis-region).$(nubis-metadata NUBIS_ACCOUNT).$(nubis-metadata NUBIS_DOMAIN)/alertmanager"
+  exec /usr/local/bin/alertmanager -config.file /etc/alertmanager.yml -web.external-url "http://mon.$(nubis-metadata NUBIS_ENVIRONMENT).$(nubis-metadata NUBIS_ARENA).$(nubis-region).$(nubis-metadata NUBIS_ACCOUNT).$(nubis-metadata NUBIS_DOMAIN)/alertmanager"
 ',
     post_stop      => '
 goal=$(initctl status $UPSTART_JOB | awk \'{print $2}\' | cut -d \'/\' -f 1)
