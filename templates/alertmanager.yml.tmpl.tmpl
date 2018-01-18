@@ -23,6 +23,8 @@ receivers:
       - api_url: '{{getv "/config/Slack/Url"}}'
         channel: '{{getv "/config/Slack/Channel"}}'
         send_resolved: true
+        # Need to be smarter and versionned, but it's a start
+        text: 'https://github.com/nubisproject/nubis-prometheus/blob/develop/docs/alerts/{{ `{{ or .CommonLabels.federated_alertname .CommonLabels.alertname }}` }}.md'
 {{end}}
 {{if exists "/config/PagerDuty/ServiceKey"}}
     pagerduty_configs:
