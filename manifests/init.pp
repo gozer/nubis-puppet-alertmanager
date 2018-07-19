@@ -63,7 +63,7 @@ class nubis_alertmanager($version = '0.8.0', $tag_name='monitoring', $project=un
   }
 
   systemd::unit_file { 'alertmanager.service':
-    source => "puppet:///${module_name}/alertmanager.systemd",
+    source => "puppet:///modules/${module_name}/alertmanager.systemd",
   }
   ->service { 'alertmanager':
     enable => true,
