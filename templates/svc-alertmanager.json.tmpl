@@ -3,6 +3,7 @@
     "name": "<%= @alertmanager_project %>-alertmanager",
     "port": 9093,
     "tags": [
+      "%%ENVIRONMENT%%",
       "<%= @alertmanager_project %>",
       "traefik.tags=<%= @tag_name %>",
       "traefik.frontend.rule=PathPrefix:/alertmanager"
